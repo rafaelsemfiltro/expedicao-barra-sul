@@ -1,11 +1,12 @@
 import * as THREE from 'three';
 import { Character } from './Character.js';
+import { LIMITE_MUNDO } from '../data/zonas.js';
 
-// Player: aplica input relativo à câmera; move com velocidade de andar (5 u/s) ou correr (9 u/s).
+// Player: aplica input relativo à câmera; move com velocidade de andar (7 u/s) ou correr (13 u/s).
 // Vira suavemente na direção do movimento.
 
-const VEL_ANDAR = 5.0;
-const VEL_CORRER = 9.5;
+const VEL_ANDAR = 7.0;
+const VEL_CORRER = 13.0;
 const TURN_SMOOTH = 12;      // quanto maior, mais rápido o giro pra direção do movimento
 
 export class Player {
@@ -46,6 +47,8 @@ export class Player {
 
     if (mv.len < 0.05) {
       this._velocidade = 0;
+      this.character.group.userData.speed = 0;
+      this.character.group.userData.facing = this._facing;
       this.character.pararAnimacao();
       return;
     }
@@ -70,17 +73,19 @@ export class Player {
     this.character.position.x += nx * vel * dt;
     this.character.position.z += nz * vel * dt;
 
-    // limita ao mundo (evita cair no vazio nesta fase)
-    const LIMITE = 340;
-    if (this.character.position.x >  LIMITE) this.character.position.x =  LIMITE;
-    if (this.character.position.x < -LIMITE) this.character.position.x = -LIMITE;
-    if (this.character.position.z >  LIMITE) this.character.position.z =  LIMITE;
-    if (this.character.position.z < -LIMITE) this.character.position.z = -LIMITE;
+    if (this.character.position.x >  LIMITE_MUNDO) this.character.position.x =  LIMITE_MUNDO;
+    if (this.character.position.x < -LIMITE_MUNDO) this.character.position.x = -LIMITE_MUNDO;
+    if (this.character.position.z >  LIMITE_MUNDO) this.character.position.z =  LIMITE_MUNDO;
+    if (this.character.position.z < -LIMITE_MUNDO) this.character.position.z = -LIMITE_MUNDO;
 
     // Vira suavemente na direção do movimento
     const targetFacing = Math.atan2(nx, nz);
     this._facing = lerpAngle(this._facing, targetFacing, 1 - Math.exp(-TURN_SMOOTH * dt));
     this.character.rotationY = this._facing;
+
+    // Expõe velocidade e direção pra CameraRig usar no auto-follow
+    this.character.group.userData.speed = vel;
+    this.character.group.userData.facing = this._facing;
 
     this.character.animarPasso(dt, vel);
   }

@@ -25,6 +25,30 @@ export function build(scene, zona) {
   torre.position.set(0, 30, 0);
   grupoPredios.add(torre);
 
+  // Farol icônico na ponta leste da orla
+  const farol = new THREE.Group();
+  const corpo = predioBox(2.4, 12, 2.4, 0xffffff);
+  corpo.position.y = 6;
+  farol.add(corpo);
+  const listra = predioBox(2.6, 1.8, 2.6, 0xd94f4f);
+  listra.position.y = 8;
+  farol.add(listra);
+  const cupula = new THREE.Mesh(
+    new THREE.ConeGeometry(1.8, 2.4, 12),
+    new THREE.MeshStandardMaterial({ color: 0xd94f4f })
+  );
+  cupula.position.y = 13.2;
+  cupula.castShadow = true;
+  farol.add(cupula);
+  const lampada = new THREE.Mesh(
+    new THREE.SphereGeometry(0.6, 12, 8),
+    new THREE.MeshStandardMaterial({ color: 0xfff2b0, emissive: 0xfff2b0, emissiveIntensity: 0.7 })
+  );
+  lampada.position.y = 11.6;
+  farol.add(lampada);
+  farol.position.set(zona.raio - 4, 0, 0);
+  grupoPredios.add(farol);
+
   g.add(grupoPredios);
   g.add(placaZona(zona));
   scene.add(g);

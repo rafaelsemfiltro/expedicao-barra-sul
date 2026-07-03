@@ -1,6 +1,7 @@
 import { Terrain } from './Terrain.js';
 import { Roads } from './Roads.js';
 import { Lighting } from './Lighting.js';
+import { Vegetation } from './Vegetation.js';
 import { ZONAS } from '../data/zonas.js';
 
 import { build as buildBC }      from './zones/BalnearioCamboriu.js';
@@ -26,6 +27,7 @@ export class World {
     this.lighting = new Lighting(scene);
     this.terrain = new Terrain(scene);
     this.roads = new Roads(scene);
+    this.vegetation = new Vegetation(scene, { quantidade: 180 });
 
     this.zonas = [];
     for (const zona of ZONAS) {

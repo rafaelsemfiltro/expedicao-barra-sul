@@ -80,7 +80,7 @@
       #zone-badge {
         position: fixed;
         top: 12px;
-        right: 12px;
+        right: 188px;
         padding: 8px 14px;
         background: rgba(0, 0, 0, 0.4);
         border-radius: 8px;
@@ -88,6 +88,26 @@
         font-weight: 600;
         z-index: 10;
         backdrop-filter: blur(6px);
+      }
+
+      #minimap-wrap {
+        position: fixed;
+        top: 12px;
+        right: 12px;
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+        z-index: 10;
+        background: rgba(0, 0, 0, 0.3);
+      }
+
+      #minimap { width: 100%; height: 100%; display: block; }
+
+      @media (max-width: 720px) {
+        #minimap-wrap { width: 110px; height: 110px; top: 8px; right: 8px; }
+        #zone-badge { right: 128px; font-size: 12px; padding: 6px 10px; }
       }
 
       #hint {
@@ -165,7 +185,6 @@
 
       @media (max-width: 720px) {
         #hud { font-size: 11px; padding: 6px 10px; }
-        #zone-badge { font-size: 12px; padding: 6px 10px; }
       }
     </style>
   </head>
@@ -183,6 +202,7 @@
     </div>
 
     <div id="zone-badge">—</div>
+    <div id="minimap-wrap"><canvas id="minimap"></canvas></div>
     <div id="hint">Clique na tela para capturar o mouse</div>
 
     <div id="mobile-controls">

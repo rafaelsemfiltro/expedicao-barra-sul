@@ -9,8 +9,8 @@ export class Engine {
     this.updatables = new Set();
 
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x9dd3ec);
-    this.scene.fog = new THREE.Fog(0x9dd3ec, 220, 520);
+    this.scene.background = criarCeuDegrade();
+    this.scene.fog = new THREE.Fog(0xbde5ff, 160, 380);
 
     this.camera = new THREE.PerspectiveCamera(
       60,
@@ -66,4 +66,23 @@ export class Engine {
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(w, h);
   }
+}
+
+// Céu em degradê: canvas 2D → CanvasTexture. Barato e evita ter que instanciar Skybox 3D.
+function criarCeuDegrade() {
+  const c = document.createElement('canvas');
+  c.width = 2;
+  c.height = 256;
+  const ctx = c.getContext('2d');
+  const grad = ctx.createLinearGradient(0, 0, 0, 256);
+  grad.addColorStop(0.0, '#5aa9d6');   // topo azul mais forte
+  grad.addColorStop(0.55, '#9dd3ec');
+  grad.addColorStop(1.0, '#e9f4ff');   // horizonte quase branco
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, 2, 256);
+  const tex = new THREE.CanvasTexture(c);
+  tex.magFilter = THREE.LinearFilter;
+  tex.minFilter = THREE.LinearFilter;
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
 }

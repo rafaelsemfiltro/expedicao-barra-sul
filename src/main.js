@@ -4,7 +4,9 @@ import { TouchInput } from './core/TouchInput.js';
 import { CameraRig } from './core/CameraRig.js';
 import { World } from './world/World.js';
 import { Player } from './entities/Player.js';
-import { SPAWN, encontrarZona } from './data/zonas.js';
+import { NPCPlaceholder, NPCS_INICIAIS } from './entities/NPCPlaceholder.js';
+import { Minimap } from './ui/Minimap.js';
+import { SPAWN, ZONAS, encontrarZona } from './data/zonas.js';
 
 const container = document.getElementById('game');
 const engine = new Engine(container);
@@ -22,7 +24,28 @@ player.cameraRig = cameraRig;
 engine.add(cameraRig);
 engine.add(player);
 
-// UI: badge de zona atual (atualiza a cada 250ms — não precisa a cada frame)
+// NPCs placeholder (Fase 2 — sem IA). Postos perto da placa da cidade a que pertencem.
+const zonaPorId = new Map(ZONAS.map(z => [z.id, z]));
+const npcs = [];
+for (const cfg of NPCS_INICIAIS) {
+  const zona = zonaPorId.get(cfg.cidade);
+  if (!zona) continue;
+  const pos = {
+    x: zona.centro.x + cfg.offset.x,
+    z: zona.centro.z + cfg.offset.z
+  };
+  const npc = new NPCPlaceholder(engine.scene, {
+    id: cfg.id, nome: cfg.nome, cor: cfg.cor, pos, facing: Math.random() * Math.PI * 2
+  });
+  npcs.push(npc);
+  engine.add(npc);
+}
+
+// Minimapa
+const minimap = new Minimap(document.getElementById('minimap'), player, npcs);
+engine.add(minimap);
+
+// UI: badge de zona atual
 const zoneBadge = document.getElementById('zone-badge');
 let zonaAtualId = null;
 setInterval(() => {
@@ -41,7 +64,6 @@ setInterval(() => {
   }
 }, 250);
 
-// Esconde loader
 requestAnimationFrame(() => {
   const loader = document.getElementById('loader');
   if (loader) {
@@ -52,6 +74,5 @@ requestAnimationFrame(() => {
 
 engine.start();
 
-// Diagnóstico
-console.log('[Expedição Barra Sul] Fase 2 iniciada. Zonas:',
-  Array.from(engine.scene.children).filter(c => c.name?.startsWith('zona-')).map(c => c.name));
+console.log('[Expedição Barra Sul] Fase 2 iniciada. NPCs placeholder:',
+  npcs.map(n => n.nome).join(', '));
