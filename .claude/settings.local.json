@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(git --version)",
+      "PowerShell($env:Path = \"$env:LOCALAPPDATA\\\\nodejs\\\\node-v22.11.0-win-x64;$env:Path\"; npm run build 2>&1)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git -c user.name=Rafael -c user.email=rafael@expedicao.local commit -m 'Fase 2: mundo 3D em blockout com movimentação *)"
+    ]
+  }
+}

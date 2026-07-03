@@ -1,0 +1,18 @@
+{
+  "name": "expedicao-barra-sul",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "description": "Expedição Barra Sul — web game 3D de treinamento para vendedores de viagens (Fase 2: mundo + movimentação)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "three": "^0.169.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.10"
+  }
+}
