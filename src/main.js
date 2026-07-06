@@ -5,7 +5,9 @@ import { CameraRig } from './core/CameraRig.js';
 import { World } from './world/World.js';
 import { Player } from './entities/Player.js';
 import { NPCPlaceholder, NPCS_INICIAIS } from './entities/NPCPlaceholder.js';
+import { CharacterCustomization } from './entities/CharacterCustomization.js';
 import { Minimap } from './ui/Minimap.js';
+import { CustomizationPanel } from './ui/CustomizationPanel.js';
 import { SPAWN, ZONAS, encontrarZona } from './data/zonas.js';
 
 const container = document.getElementById('game');
@@ -40,6 +42,10 @@ for (const cfg of NPCS_INICIAIS) {
   npcs.push(npc);
   engine.add(npc);
 }
+
+// Customização visual (painel de teste manual — Fase 4 ligará ao XP real)
+const customization = new CharacterCustomization(player.character);
+const customPanel = new CustomizationPanel(customization);
 
 // Minimapa
 const minimap = new Minimap(document.getElementById('minimap'), player, npcs);

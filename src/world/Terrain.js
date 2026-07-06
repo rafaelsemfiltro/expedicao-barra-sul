@@ -1,43 +1,43 @@
 import * as THREE from 'three';
+import { toonMaterial, PALETA } from './toon.js';
 
-// Chão verde plano (blockout) + mar azul cobrindo o leste e envolvendo a costa.
-// Praias douradas nas zonas litorâneas ficam por conta das próprias zones.
+// Chão com variação sutil (dois tons de grama em manchas) + mar + praia.
+// Manchas geradas via CanvasTexture — bem baratas.
 
 export class Terrain {
   constructor(scene) {
     this.group = new THREE.Group();
     this.group.name = 'terrain';
 
-    // Grama
+    // Grama com textura de manchas
+    const gramaMat = toonMaterial(0xffffff);   // cor branca; textura carrega a cor
+    gramaMat.map = gerarTexturaGrama();
+    gramaMat.map.wrapS = gramaMat.map.wrapT = THREE.RepeatWrapping;
+    gramaMat.map.repeat.set(6, 6);
+
     const chao = new THREE.Mesh(
       new THREE.PlaneGeometry(700, 700, 1, 1),
-      new THREE.MeshStandardMaterial({ color: 0x7fb96a, roughness: 0.95, metalness: 0 })
+      gramaMat
     );
     chao.rotation.x = -Math.PI / 2;
     chao.receiveShadow = true;
     this.group.add(chao);
 
-    // Mar (leve abaixo do chão para simular praia)
-    this.marMat = new THREE.MeshStandardMaterial({
-      color: 0x2f8fc9,
-      roughness: 0.5,
-      metalness: 0.15,
-      transparent: true,
-      opacity: 0.92
-    });
+    // Mar
+    this.marMat = toonMaterial(PALETA.mar, { transparent: true, opacity: 0.94 });
     const mar = new THREE.Mesh(new THREE.PlaneGeometry(1600, 1600, 1, 1), this.marMat);
     mar.rotation.x = -Math.PI / 2;
-    mar.position.set(600, -0.35, 0);   // costa a leste
+    mar.position.set(600, -0.35, 0);
     mar.receiveShadow = true;
     this.group.add(mar);
 
-    // Fita de praia dourada bem no litoral
+    // Praia
     const praia = new THREE.Mesh(
       new THREE.PlaneGeometry(60, 500, 1, 1),
-      new THREE.MeshStandardMaterial({ color: 0xf5d76e, roughness: 1 })
+      toonMaterial(PALETA.praia)
     );
     praia.rotation.x = -Math.PI / 2;
-    praia.position.set(190, 0.02, 20);
+    praia.position.set(120, 0.02, 20);
     praia.receiveShadow = true;
     this.group.add(praia);
 
@@ -45,8 +45,38 @@ export class Terrain {
   }
 
   update(dt) {
-    // Efeito sutil de brilho oscilante no mar
-    const t = performance.now() * 0.0006;
-    this.marMat.color.setHSL(0.58, 0.55, 0.42 + Math.sin(t) * 0.02);
+    // Sem efeito animado nesta versão — toonMaterial fica mais estável estático.
   }
+}
+
+// Textura procedural de grama: fundo verde-médio + manchas mais claras e mais escuras.
+function gerarTexturaGrama() {
+  const c = document.createElement('canvas');
+  c.width = 256; c.height = 256;
+  const ctx = c.getContext('2d');
+
+  // Base
+  ctx.fillStyle = '#8fd06a';
+  ctx.fillRect(0, 0, 256, 256);
+
+  // Manchas claras
+  ctx.fillStyle = '#b7e88a';
+  for (let i = 0; i < 60; i++) {
+    ctx.beginPath();
+    ctx.arc(Math.random() * 256, Math.random() * 256, 6 + Math.random() * 14, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Manchas escuras
+  ctx.fillStyle = '#6fa851';
+  for (let i = 0; i < 40; i++) {
+    ctx.beginPath();
+    ctx.arc(Math.random() * 256, Math.random() * 256, 4 + Math.random() * 10, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = 4;
+  return tex;
 }

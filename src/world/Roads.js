@@ -1,13 +1,14 @@
 import * as THREE from 'three';
+import { toonMaterial } from './toon.js';
 import { ZONAS, ESTRADAS } from '../data/zonas.js';
 
-// Estradas retas entre centros de zonas: caixas cinzas finas, levemente acima do chão.
+// Estradas cinza pastel entre centros de zonas.
 export class Roads {
   constructor(scene) {
     this.group = new THREE.Group();
     this.group.name = 'roads';
 
-    const mat = new THREE.MeshStandardMaterial({ color: 0x555a63, roughness: 0.95 });
+    const mat = toonMaterial(0xc4beb2);   // areia/estrada pastel
     const larguraEstrada = 5;
 
     const zonaPorId = new Map(ZONAS.map(z => [z.id, z]));
@@ -25,7 +26,6 @@ export class Roads {
       const mesh = new THREE.Mesh(geo, mat);
       mesh.rotation.x = -Math.PI / 2;
       mesh.position.set((ax + bx) / 2, 0.03, (az + bz) / 2);
-      // rotaciona no plano XZ pra alinhar com o vetor
       mesh.rotation.z = -Math.atan2(dx, dz);
       mesh.receiveShadow = true;
       this.group.add(mesh);
@@ -34,5 +34,5 @@ export class Roads {
     scene.add(this.group);
   }
 
-  update() { /* estático */ }
+  update() {}
 }

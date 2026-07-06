@@ -11,7 +11,7 @@ const TURN_SMOOTH = 12;      // quanto maior, mais rápido o giro pra direção 
 
 export class Player {
   constructor(scene, inputs, cameraRig, spawn) {
-    this.character = new Character({ cor: 0x2f8fc9, nome: 'jogador', altura: 1.8 });
+    this.character = new Character({ cor: 0x4fa8d8, nome: 'jogador' });
     this.character.group.position.set(spawn.x, 0, spawn.z);
     scene.add(this.character.group);
 
@@ -49,7 +49,7 @@ export class Player {
       this._velocidade = 0;
       this.character.group.userData.speed = 0;
       this.character.group.userData.facing = this._facing;
-      this.character.pararAnimacao();
+      this.character.update(dt, 0);
       return;
     }
 
@@ -87,7 +87,7 @@ export class Player {
     this.character.group.userData.speed = vel;
     this.character.group.userData.facing = this._facing;
 
-    this.character.animarPasso(dt, vel);
+    this.character.update(dt, vel);
   }
 }
 

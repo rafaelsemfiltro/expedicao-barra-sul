@@ -183,8 +183,119 @@
 
       #btn-run.active { background: rgba(255, 235, 130, 0.75); }
 
+      /* Painel de customização */
+      #custom-toggle {
+        position: fixed;
+        left: 12px;
+        bottom: 12px;
+        z-index: 15;
+        padding: 8px 14px;
+        background: rgba(0, 0, 0, 0.55);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        backdrop-filter: blur(8px);
+      }
+
+      #custom-toggle:hover { background: rgba(0, 0, 0, 0.75); }
+
+      #custom-panel {
+        position: fixed;
+        left: 12px;
+        bottom: 56px;
+        width: 300px;
+        max-height: 65vh;
+        background: rgba(20, 20, 30, 0.92);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 12px;
+        overflow: hidden;
+        display: none;
+        z-index: 15;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(10px);
+        font-size: 12px;
+      }
+
+      #custom-panel.open { display: flex; flex-direction: column; }
+
+      .custom-header {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 10px 14px;
+        background: rgba(0, 0, 0, 0.35);
+        font-weight: 600;
+      }
+
+      #custom-close {
+        background: transparent; color: #fff; border: none;
+        font-size: 20px; cursor: pointer; line-height: 1;
+      }
+
+      .custom-body {
+        padding: 12px 14px 14px 14px;
+        overflow-y: auto;
+      }
+
+      .custom-label {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      #nivel-titulo { opacity: 0.7; }
+
+      #nivel-slider {
+        width: 100%;
+        margin: 4px 0 14px 0;
+      }
+
+      .custom-slot {
+        margin-bottom: 12px;
+      }
+
+      .custom-slot-label {
+        font-weight: 600;
+        opacity: 0.85;
+        margin-bottom: 6px;
+      }
+
+      .custom-slot-opts {
+        display: flex; flex-wrap: wrap; gap: 6px;
+      }
+
+      .custom-opt {
+        min-width: 40px;
+        padding: 6px 10px;
+        border-radius: 8px;
+        border: 2px solid transparent;
+        color: #1a1a1a;
+        font-size: 11px;
+        font-weight: 600;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+      }
+
+      .custom-opt.selected { border-color: #ffe08a; box-shadow: 0 0 0 2px rgba(255,224,138,0.35); }
+
+      .custom-reset {
+        margin-top: 6px;
+        padding: 6px 12px;
+        border-radius: 6px;
+        border: 1px solid rgba(255,255,255,0.2);
+        background: transparent;
+        color: #fff;
+        cursor: pointer;
+        font-size: 11px;
+      }
+
+      .custom-vazio { opacity: 0.7; font-style: italic; }
+
       @media (max-width: 720px) {
         #hud { font-size: 11px; padding: 6px 10px; }
+        #custom-panel { width: calc(100vw - 24px); left: 12px; right: 12px; }
       }
     </style>
   </head>

@@ -10,7 +10,7 @@ export class Engine {
 
     this.scene = new THREE.Scene();
     this.scene.background = criarCeuDegrade();
-    this.scene.fog = new THREE.Fog(0xbde5ff, 160, 380);
+    this.scene.fog = new THREE.Fog(0xfbf1d8, 130, 320);
 
     this.camera = new THREE.PerspectiveCamera(
       60,
@@ -29,8 +29,8 @@ export class Engine {
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
-    this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.05;
+    // Toon fica mais bonito com tone mapping neutro/linear; ACES escurece muito
+    this.renderer.toneMapping = THREE.NoToneMapping;
 
     container.appendChild(this.renderer.domElement);
 
@@ -75,9 +75,9 @@ function criarCeuDegrade() {
   c.height = 256;
   const ctx = c.getContext('2d');
   const grad = ctx.createLinearGradient(0, 0, 0, 256);
-  grad.addColorStop(0.0, '#5aa9d6');   // topo azul mais forte
-  grad.addColorStop(0.55, '#9dd3ec');
-  grad.addColorStop(1.0, '#e9f4ff');   // horizonte quase branco
+  grad.addColorStop(0.0, '#8bc9e6');   // topo azul pastel
+  grad.addColorStop(0.55, '#c6e6f2');  // meio azul-claro
+  grad.addColorStop(1.0, '#fbf1d8');   // horizonte quente pastel
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, 2, 256);
   const tex = new THREE.CanvasTexture(c);

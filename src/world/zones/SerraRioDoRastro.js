@@ -1,7 +1,8 @@
 import * as THREE from 'three';
 import { chaoZona, placaZona, predioBox } from './_common.js';
+import { toonMaterial, PALETA } from '../toon.js';
 
-// Serra: morros em cones e cabaninhas de madeira. Menos "cidade", mais paisagem.
+// Serra: morros em cones + cabaninhas de madeira. Menos "cidade", mais paisagem.
 export function build(scene, zona) {
   const g = new THREE.Group();
   g.name = 'zona-' + zona.id;
@@ -10,14 +11,15 @@ export function build(scene, zona) {
   const grupo = new THREE.Group();
   grupo.position.set(zona.centro.x, 0, zona.centro.z);
 
-  // Anel de morros
+  const morroMat = toonMaterial(PALETA.serraMorro);
+
   for (let i = 0; i < 8; i++) {
     const ang = (i / 8) * Math.PI * 2;
     const r = zona.raio - 6 - Math.random() * 4;
     const altura = 12 + Math.random() * 12;
     const morro = new THREE.Mesh(
       new THREE.ConeGeometry(6 + Math.random() * 3, altura, 8),
-      new THREE.MeshStandardMaterial({ color: 0x5f7a4a, roughness: 1 })
+      morroMat
     );
     morro.position.set(Math.cos(ang) * r, altura / 2, Math.sin(ang) * r);
     morro.castShadow = true;
@@ -25,17 +27,16 @@ export function build(scene, zona) {
     grupo.add(morro);
   }
 
-  // Algumas cabanas centrais
   for (let i = 0; i < 4; i++) {
     const ang = (i / 4) * Math.PI * 2;
     const r = 6;
     const cabana = new THREE.Group();
-    const parede = predioBox(3, 2.5, 3, zona.corPredios);
+    const parede = predioBox(3, 2.5, 3, PALETA.serraCabana);
     parede.position.y = 1.25;
     cabana.add(parede);
     const telhado = new THREE.Mesh(
       new THREE.ConeGeometry(2.4, 1.6, 4),
-      new THREE.MeshStandardMaterial({ color: 0x2c1810 })
+      toonMaterial(0x5a3a25)
     );
     telhado.rotation.y = Math.PI / 4;
     telhado.position.y = 3.3;
@@ -45,8 +46,8 @@ export function build(scene, zona) {
     grupo.add(cabana);
   }
 
-  // Mirante — plataforma no ar em um dos morros
-  const plataforma = predioBox(4, 0.3, 4, 0xd9b382);
+  // Mirante
+  const plataforma = predioBox(4, 0.3, 4, PALETA.serraMadeira);
   plataforma.position.set(zona.raio - 8, 14, 0);
   grupo.add(plataforma);
 

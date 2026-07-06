@@ -1,7 +1,8 @@
 import * as THREE from 'three';
 import { chaoZona, placaZona, predioBox, distribuirAoRedor } from './_common.js';
+import { toonMaterial, PALETA } from '../toon.js';
 
-// Blockout: torres altas em vários tons de claro, marcando o skyline verticalizado da orla.
+// Torres altas em vários tons pastel + farol icônico.
 export function build(scene, zona) {
   const g = new THREE.Group();
   g.name = 'zona-' + zona.id;
@@ -10,39 +11,48 @@ export function build(scene, zona) {
   const grupoPredios = new THREE.Group();
   grupoPredios.position.set(zona.centro.x, 0, zona.centro.z);
 
+  const tonsTorre = [0xfaf6ef, 0xe8dcc7, 0xf5d9c4, 0xf7ecd0, 0xffe5ce];
+
   distribuirAoRedor(grupoPredios, zona, 14, 6, (i) => {
     const w = 3 + Math.random() * 2;
     const h = 14 + Math.random() * 22;
     const d = 3 + Math.random() * 2;
-    const tone = 0xf0f4f8 - (i % 4) * 0x080808;
-    const p = predioBox(w, h, d, tone);
+    const cor = tonsTorre[i % tonsTorre.length];
+    const p = predioBox(w, h, d, cor);
     p.position.y = h / 2;
     return p;
   });
 
-  // Uma torre-marco bem alta ao centro (Millennium Palace vibes)
+  // Torre-marco central com "chapéu" arredondado
   const torre = predioBox(5, 60, 5, 0xffffff);
   torre.position.set(0, 30, 0);
   grupoPredios.add(torre);
+  const topoTorre = new THREE.Mesh(
+    new THREE.SphereGeometry(3.2, 20, 12, 0, Math.PI * 2, 0, Math.PI / 2),
+    toonMaterial(PALETA.floripaPonte)
+  );
+  topoTorre.position.set(0, 60, 0);
+  topoTorre.castShadow = true;
+  grupoPredios.add(topoTorre);
 
-  // Farol icônico na ponta leste da orla
+  // Farol
   const farol = new THREE.Group();
   const corpo = predioBox(2.4, 12, 2.4, 0xffffff);
   corpo.position.y = 6;
   farol.add(corpo);
-  const listra = predioBox(2.6, 1.8, 2.6, 0xd94f4f);
+  const listra = predioBox(2.6, 1.8, 2.6, PALETA.floripaPonte);
   listra.position.y = 8;
   farol.add(listra);
   const cupula = new THREE.Mesh(
     new THREE.ConeGeometry(1.8, 2.4, 12),
-    new THREE.MeshStandardMaterial({ color: 0xd94f4f })
+    toonMaterial(PALETA.floripaPonte)
   );
   cupula.position.y = 13.2;
   cupula.castShadow = true;
   farol.add(cupula);
   const lampada = new THREE.Mesh(
     new THREE.SphereGeometry(0.6, 12, 8),
-    new THREE.MeshStandardMaterial({ color: 0xfff2b0, emissive: 0xfff2b0, emissiveIntensity: 0.7 })
+    new THREE.MeshBasicMaterial({ color: 0xfff2b0 })
   );
   lampada.position.y = 11.6;
   farol.add(lampada);

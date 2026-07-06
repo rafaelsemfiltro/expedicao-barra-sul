@@ -1,0 +1,62 @@
+{
+  "descricao": "Desbloqueios visuais por nível. CharacterCustomization aplica um look composto por escolhas nos slots: corCorpo, cabelo, chapeu, oculos, roupa, acessorio, itemCidade.",
+  "niveis": [
+    {
+      "nivel": 1,
+      "titulo": "Iniciante",
+      "desbloqueia": []
+    },
+    {
+      "nivel": 2,
+      "titulo": "Trocando de camisa",
+      "desbloqueia": [
+        { "slot": "corCorpo", "id": "azul",    "nome": "Azul",     "hex": "#4fa8d8" },
+        { "slot": "corCorpo", "id": "verde",   "nome": "Verde",    "hex": "#5cbf7a" },
+        { "slot": "corCorpo", "id": "rosa",    "nome": "Rosa",     "hex": "#f0a6c0" },
+        { "slot": "corCorpo", "id": "amarelo", "nome": "Amarelo",  "hex": "#f5c95c" },
+        { "slot": "corCorpo", "id": "roxo",    "nome": "Roxo",     "hex": "#b78cd6" },
+        { "slot": "corCorpo", "id": "coral",   "nome": "Coral",    "hex": "#f28775" }
+      ]
+    },
+    {
+      "nivel": 3,
+      "titulo": "Cabelo na moda",
+      "desbloqueia": [
+        { "slot": "cabelo", "id": "castanho",  "nome": "Cabelo castanho", "tipo": "cabelo", "hex": "#5a3a25" },
+        { "slot": "cabelo", "id": "loiro",     "nome": "Loiro",           "tipo": "cabelo", "hex": "#e8c67a" },
+        { "slot": "cabelo", "id": "preto",     "nome": "Preto",           "tipo": "cabelo", "hex": "#2a2a35" },
+        { "slot": "chapeu", "id": "bone",      "nome": "Boné",            "tipo": "bone",   "hex": "#e08c8c" },
+        { "slot": "chapeu", "id": "chapeu-praia", "nome": "Chapéu de praia", "tipo": "chapeu-praia", "hex": "#f7e8c0" }
+      ]
+    },
+    {
+      "nivel": 4,
+      "titulo": "Guarda-roupa",
+      "desbloqueia": [
+        { "slot": "roupa", "id": "camiseta-firma", "nome": "Camiseta da firma", "tipo": "camiseta", "hex": "#2f6faa" },
+        { "slot": "roupa", "id": "camiseta-floral", "nome": "Floral de turista", "tipo": "floral", "hex": "#7fbf6a" },
+        { "slot": "roupa", "id": "regata",         "nome": "Regata branca",     "tipo": "regata", "hex": "#f0f0f0" }
+      ]
+    },
+    {
+      "nivel": 5,
+      "titulo": "Acessórios",
+      "desbloqueia": [
+        { "slot": "oculos",    "id": "escuros",     "nome": "Óculos escuros",  "tipo": "escuros", "hex": "#1a1a1a" },
+        { "slot": "acessorio", "id": "camera",      "nome": "Câmera no peito", "tipo": "camera",  "hex": "#2a2a35" },
+        { "slot": "acessorio", "id": "mochila",     "nome": "Mochila",         "tipo": "mochila", "hex": "#c76a55" },
+        { "slot": "acessorio", "id": "prancha",     "nome": "Prancha de surf", "tipo": "prancha", "hex": "#f0f0f0" }
+      ]
+    },
+    {
+      "nivel": 6,
+      "titulo": "Itens de cidade",
+      "desbloqueia": [
+        { "slot": "itemCidade", "id": "chapeu-oktoberfest", "nome": "Chapéu de Oktoberfest",  "tipo": "chapeu-oktoberfest", "hex": "#4a5c2f", "cidade": "blumenau" },
+        { "slot": "itemCidade", "id": "snorkel",            "nome": "Snorkel de Bombinhas",   "tipo": "snorkel",            "hex": "#f47a9a", "cidade": "bombinhas" },
+        { "slot": "itemCidade", "id": "casaco-serra",       "nome": "Casaco da Serra",       "tipo": "casaco",            "hex": "#8a6a4a", "cidade": "serra-rio-do-rastro" },
+        { "slot": "itemCidade", "id": "orelhas-parque",     "nome": "Tiara do Beto Carrero", "tipo": "orelhas-parque",    "hex": "#f47a9a", "cidade": "beto-carrero" }
+      ]
+    }
+  ]
+}

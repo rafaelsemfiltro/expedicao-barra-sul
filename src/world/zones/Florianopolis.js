@@ -1,7 +1,8 @@
 import * as THREE from 'three';
 import { chaoZona, placaZona, predioBox, distribuirAoRedor } from './_common.js';
+import { toonMaterial, PALETA } from '../toon.js';
 
-// Floripa: prédios médios + um "arco" simbolizando a Ponte Hercílio Luz.
+// Floripa: prédios médios pastel + arco vermelho estilizado (Ponte Hercílio Luz).
 export function build(scene, zona) {
   const g = new THREE.Group();
   g.name = 'zona-' + zona.id;
@@ -10,29 +11,30 @@ export function build(scene, zona) {
   const grupoPredios = new THREE.Group();
   grupoPredios.position.set(zona.centro.x, 0, zona.centro.z);
 
-  distribuirAoRedor(grupoPredios, zona, 12, 6, () => {
+  const tons = [0xf5f7f9, 0xe3ecf3, 0xf0e4d0, 0xd7e5ef, 0xfae6d6];
+
+  distribuirAoRedor(grupoPredios, zona, 12, 6, (i) => {
     const w = 3 + Math.random() * 2;
     const h = 6 + Math.random() * 8;
     const d = 3 + Math.random() * 2;
-    const p = predioBox(w, h, d, 0xeaeef2);
+    const p = predioBox(w, h, d, tons[i % tons.length]);
     p.position.y = h / 2;
     return p;
   });
 
-  // Ponte Hercílio Luz — arco vermelho estilizado
+  // Ponte
   const arco = new THREE.Mesh(
     new THREE.TorusGeometry(6, 0.8, 12, 24, Math.PI),
-    new THREE.MeshStandardMaterial({ color: zona.corPredios, roughness: 0.6 })
+    toonMaterial(PALETA.floripaPonte)
   );
   arco.position.set(0, 6, 0);
-  arco.rotation.x = 0;
   arco.castShadow = true;
   grupoPredios.add(arco);
 
-  const base1 = predioBox(1, 6, 1, zona.corPredios);
+  const base1 = predioBox(1, 6, 1, PALETA.floripaPonte);
   base1.position.set(-6, 3, 0);
   grupoPredios.add(base1);
-  const base2 = predioBox(1, 6, 1, zona.corPredios);
+  const base2 = predioBox(1, 6, 1, PALETA.floripaPonte);
   base2.position.set(6, 3, 0);
   grupoPredios.add(base2);
 
