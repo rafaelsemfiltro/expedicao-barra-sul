@@ -9,7 +9,8 @@
       "Bash(git -c user.name=Rafael -c user.email=rafael@expedicao.local commit -m 'Fase 2: mundo 3D em blockout com movimentação *)",
       "PowerShell($r = Invoke-WebRequest -Uri \"http://localhost:5173/\" -UseBasicParsing -TimeoutSec 10; Write-Output \"Status: $\\($r.StatusCode\\)\"; Write-Output \"Length: $\\($r.Content.Length\\) bytes\"; if \\($r.Content -match \"Expedição Barra Sul\"\\) { Write-Output \"OK: index.html servindo o titulo do jogo\" } else { Write-Output \"AVISO: titulo nao encontrado no HTML\" }; $js = Invoke-WebRequest -Uri \"http://localhost:5173/src/main.js\" -UseBasicParsing -TimeoutSec 10; Write-Output \"main.js: $\\($js.StatusCode\\), $\\($js.Content.Length\\) bytes\")",
       "PowerShell($r = Invoke-WebRequest -Uri \"http://localhost:5173/\" -UseBasicParsing; if \\($r.Content -match \"Barra Sul\" -and $r.Content -match \"/src/main.js\"\\) { Write-Output \"OK: HTML contem titulo do jogo e referencia main.js\" } else { Write-Output \"FALHA\"; $r.Content.Substring\\(0, 500\\) })",
-      "Bash(git -c user.name=Rafael -c user.email=rafael@expedicao.local commit -m 'Feedback pass: velocidade, minimapa, camera auto-follow e detalhes *)"
+      "Bash(git -c user.name=Rafael -c user.email=rafael@expedicao.local commit -m 'Feedback pass: velocidade, minimapa, camera auto-follow e detalhes *)",
+      "Bash(git -c user.name=Rafael -c user.email=rafael@expedicao.local commit -m 'Preparar deploy no GitHub Pages *)"
     ]
   }
 }
