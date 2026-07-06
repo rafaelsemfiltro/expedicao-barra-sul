@@ -13,7 +13,10 @@
       "Bash(git -c user.name=Rafael -c user.email=rafael@expedicao.local commit -m 'Preparar deploy no GitHub Pages *)",
       "PowerShell(& \"$env:LOCALAPPDATA\\\\gh-cli\\\\bin\\\\gh.exe\" auth login --web -h github.com -p https 2>&1)",
       "Bash(GIT_SSH_COMMAND='ssh -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=C:\\\\Users\\\\User/.ssh/known_hosts' git push -u origin main)",
-      "Bash(git -c user.name=Rafael -c user.email=rafael@expedicao.local commit -m 'Fase 3: NPCs autonomos com cerebro, memoria, social e conversas *)"
+      "Bash(git -c user.name=Rafael -c user.email=rafael@expedicao.local commit -m 'Fase 3: NPCs autonomos com cerebro, memoria, social e conversas *)",
+      "Bash(git push *)",
+      "Bash(git -c user.name=Rafael -c user.email=rafael@expedicao.local commit -m 'Docs: fotos passam a vir de repositorios CC0/CC-BY, nao acervo proprio *)",
+      "Bash(git -c user.name=Rafael -c user.email=rafael@expedicao.local commit -m 'Troca do elenco ficticio pelo real \\(23 vendedores\\) *)"
     ]
   }
 }

@@ -6,6 +6,11 @@
 //
 // Templates ficam em cooldown de N segundos por par pra não repetir a mesma
 // piada pra mesma dupla. O par (a,b) é ordenado — dá igual quem falou primeiro.
+//
+// REGRA DE OURO (PROJETO-MESTRE): provocações só falam de trabalho —
+// desempenho de venda, meta, ranking, quiz. Nunca sobre traço pessoal
+// (aparência, origem, condição, família). Os templates em grammar/provocacoes
+// respeitam isso e novos templates devem seguir a mesma regra.
 
 import cotidiano   from './grammar/cotidiano.js';
 import destinos    from './grammar/destinos.js';

@@ -67,8 +67,10 @@ for (const npc of npcs) {
   engine.add(npc);
 }
 
-// Seed do MemoryBank: registra uma "ausência" pra dar assunto na abertura
-memory.add('absence', { actor: 'marcelo' });
+// Seed do MemoryBank: registra uma "ausência" pra dar assunto na abertura.
+// Pega alguém aleatório do elenco pra não fixar drama num nome específico.
+const ausenteSeed = personagens[Math.floor(Math.random() * personagens.length)].id;
+memory.add('absence', { actor: ausenteSeed });
 
 // Customização visual (painel de teste)
 const customization = new CharacterCustomization(player.character);

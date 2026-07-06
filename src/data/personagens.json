@@ -1,98 +1,462 @@
 [
   {
-    "id": "jefinho",
-    "nome": "Jefinho",
-    "titulo": "O Fofoqueiro",
-    "cidade_base": "balneario-camboriu",
-    "avatar": { "corBody": "#8bc98a" },
+    "id": "brenda",
+    "nome": "Brenda",
+    "titulo": "A Opinião Firme",
+    "cidade_base": "serra-rio-do-rastro",
+    "avatar": { "corBody": "#d94f4f" },
     "voz": {
-      "bordoes": ["Gente, vocês não sabem...", "Tô sabendo de tudo,", "Escuta essa,", "Não vou dar nome, mas"],
-      "estilo": ["exagero", "sussurro", "pergunta_retorica"]
+      "bordoes": ["Eu já falei uma vez,", "Vou repetir:", "Que absurdo,", "Meu Deus do céu,"],
+      "estilo": ["opiniao_firme", "direto"]
     },
     "personalidade": {
-      "competitividade": 0.4,
-      "fofoca": 1.0,
-      "humor": 0.9,
-      "paciencia": 0.6,
-      "ego": 0.5,
-      "energia": 0.85
+      "competitividade": 0.6, "fofoca": 0.5, "humor": 0.5,
+      "paciencia": 0.3, "ego": 0.6, "energia": 0.75
     },
     "social": {
-      "amigos": ["rose"],
-      "rivais": ["marcelo"],
-      "assuntos_favoritos": ["vida_alheia", "sumidos", "provocacao"]
+      "amigos": ["joana"],
+      "rivais": ["helenice"],
+      "assuntos_favoritos": ["cotidiano", "provocacao"]
     }
   },
   {
-    "id": "marcelo",
-    "nome": "Marcelo",
-    "titulo": "O Fechador",
-    "cidade_base": "florianopolis",
+    "id": "joana",
+    "nome": "Joana Darc",
+    "titulo": "A Guerreira",
+    "cidade_base": "serra-rio-do-rastro",
     "avatar": { "corBody": "#e08c8c" },
     "voz": {
-      "bordoes": ["Última unidade,", "Fechei mais uma,", "Enquanto vocês pensam,", "Essa é comigo,"],
-      "estilo": ["numeros", "pressa", "auto_promocao"]
+      "bordoes": ["Se for pra fazer,", "Não vim de longe pra desistir,", "Bora?", "Coragem é o que não falta,"],
+      "estilo": ["coragem", "determinacao"]
     },
     "personalidade": {
-      "competitividade": 1.0,
-      "fofoca": 0.3,
-      "humor": 0.4,
-      "paciencia": 0.3,
-      "ego": 0.95,
-      "energia": 0.9
+      "competitividade": 0.8, "fofoca": 0.3, "humor": 0.6,
+      "paciencia": 0.5, "ego": 0.5, "energia": 0.9
+    },
+    "social": {
+      "amigos": ["brenda", "isabella"],
+      "rivais": [],
+      "assuntos_favoritos": ["destinos", "cotidiano"]
+    }
+  },
+  {
+    "id": "samuel",
+    "nome": "Samuel",
+    "titulo": "O Bobalhão Querido",
+    "cidade_base": "bombinhas",
+    "avatar": { "corBody": "#ffe08a" },
+    "voz": {
+      "bordoes": ["Sabe aquela do...", "Essa é boa,", "Deixa eu contar uma,", "Adivinha só,"],
+      "estilo": ["piada", "entusiasmo"]
+    },
+    "personalidade": {
+      "competitividade": 0.3, "fofoca": 0.6, "humor": 1.0,
+      "paciencia": 0.7, "ego": 0.3, "energia": 0.85
+    },
+    "social": {
+      "amigos": ["priscila", "rafaela"],
+      "rivais": [],
+      "assuntos_favoritos": ["cotidiano", "vida_alheia"]
+    }
+  },
+  {
+    "id": "gabriel",
+    "nome": "Gabriel",
+    "titulo": "O Articulado",
+    "cidade_base": "florianopolis",
+    "avatar": { "corBody": "#8bc98a" },
+    "voz": {
+      "bordoes": ["Na verdade,", "Vou te explicar,", "Tecnicamente falando,", "Se pararmos pra pensar,"],
+      "estilo": ["articulacao", "auto_promocao"]
+    },
+    "personalidade": {
+      "competitividade": 0.75, "fofoca": 0.3, "humor": 0.5,
+      "paciencia": 0.5, "ego": 0.85, "energia": 0.8
+    },
+    "social": {
+      "amigos": ["bianca"],
+      "rivais": ["rafael"],
+      "assuntos_favoritos": ["destinos", "auto_promocao"]
+    }
+  },
+  {
+    "id": "ariana",
+    "nome": "Ariana",
+    "titulo": "A Que Está na Lua",
+    "cidade_base": "bombinhas",
+    "avatar": { "corBody": "#f0b6d4" },
+    "voz": {
+      "bordoes": ["Hein?", "Ai que fofo,", "Deixa eu ver...", "Peraí, o que era mesmo?"],
+      "estilo": ["doce", "distraida"]
+    },
+    "personalidade": {
+      "competitividade": 0.2, "fofoca": 0.3, "humor": 0.6,
+      "paciencia": 0.85, "ego": 0.2, "energia": 0.55
+    },
+    "social": {
+      "amigos": ["rafaela", "isabella"],
+      "rivais": [],
+      "assuntos_favoritos": ["cotidiano", "destinos"]
+    }
+  },
+  {
+    "id": "luciana",
+    "nome": "Luciana F",
+    "titulo": "A Estrela",
+    "cidade_base": "balneario-camboriu",
+    "avatar": { "corBody": "#f5c95c" },
+    "voz": {
+      "bordoes": ["Óbvio que vou levar,", "Primeiro lugar de novo,", "Cadê minha medalha?", "Palmas pra mim,"],
+      "estilo": ["holofote", "auto_promocao"]
+    },
+    "personalidade": {
+      "competitividade": 1.0, "fofoca": 0.4, "humor": 0.6,
+      "paciencia": 0.35, "ego": 0.95, "energia": 0.95
     },
     "social": {
       "amigos": [],
-      "rivais": ["jefinho", "carla"],
-      "assuntos_favoritos": ["ranking", "destinos", "auto_promocao"]
+      "rivais": ["edmarton"],
+      "assuntos_favoritos": ["auto_promocao", "provocacao", "destinos"]
     }
   },
   {
-    "id": "carla",
-    "nome": "Carla",
-    "titulo": "A Competitiva",
-    "cidade_base": "beto-carrero",
-    "avatar": { "corBody": "#f0b6d4" },
+    "id": "rafaela",
+    "nome": "Rafaela",
+    "titulo": "A Distraída Engraçada",
+    "cidade_base": "bombinhas",
+    "avatar": { "corBody": "#b6d8f0" },
     "voz": {
-      "bordoes": ["Já garanti o meu,", "Bota no meu nome,", "Do jeito que combinamos,", "Se depender de mim,"],
-      "estilo": ["decisao", "confianca", "meta"]
+      "bordoes": ["Peraí, esqueci,", "Nossa como?", "Sério que fiz isso?", "Não acreditei em mim mesma,"],
+      "estilo": ["distracao", "humor_autodepreciativo"]
     },
     "personalidade": {
-      "competitividade": 0.95,
-      "fofoca": 0.4,
-      "humor": 0.6,
-      "paciencia": 0.5,
-      "ego": 0.7,
-      "energia": 0.85
+      "competitividade": 0.3, "fofoca": 0.7, "humor": 0.9,
+      "paciencia": 0.6, "ego": 0.3, "energia": 0.75
     },
     "social": {
-      "amigos": ["rose"],
-      "rivais": ["marcelo"],
-      "assuntos_favoritos": ["ranking", "destinos", "provocacao"]
-    }
-  },
-  {
-    "id": "rose",
-    "nome": "Dona Rose",
-    "titulo": "A Veterana",
-    "cidade_base": "blumenau",
-    "avatar": { "corBody": "#b69ad3" },
-    "voz": {
-      "bordoes": ["No meu tempo,", "Deixa a Dona Rose contar,", "Quando eu comecei nisso,", "Essa juventude aí,"],
-      "estilo": ["nostalgia", "sabedoria", "ironia_seca"]
-    },
-    "personalidade": {
-      "competitividade": 0.3,
-      "fofoca": 0.7,
-      "humor": 0.8,
-      "paciencia": 0.9,
-      "ego": 0.4,
-      "energia": 0.5
-    },
-    "social": {
-      "amigos": ["jefinho", "carla"],
+      "amigos": ["samuel", "ariana", "kaic"],
       "rivais": [],
-      "assuntos_favoritos": ["vida_alheia", "destinos", "cotidiano"]
+      "assuntos_favoritos": ["cotidiano", "vida_alheia"]
+    }
+  },
+  {
+    "id": "bianca",
+    "nome": "Bianca",
+    "titulo": "A Blogueirinha",
+    "cidade_base": "balneario-camboriu",
+    "avatar": { "corBody": "#f0a6c0" },
+    "voz": {
+      "bordoes": ["Já tirei uns 20 stories,", "Isso rende conteúdo,", "Vou postar depois,", "Espera, tô gravando,"],
+      "estilo": ["influenciadora", "redes_sociais"]
+    },
+    "personalidade": {
+      "competitividade": 0.6, "fofoca": 0.7, "humor": 0.7,
+      "paciencia": 0.5, "ego": 0.75, "energia": 0.85
+    },
+    "social": {
+      "amigos": ["gabriel"],
+      "rivais": [],
+      "assuntos_favoritos": ["destinos", "vida_alheia"]
+    }
+  },
+  {
+    "id": "isabella",
+    "nome": "Isabella",
+    "titulo": "A Protetora",
+    "cidade_base": "serra-rio-do-rastro",
+    "avatar": { "corBody": "#b7e88a" },
+    "voz": {
+      "bordoes": ["Cuidado aí,", "Vou dar uma olhada,", "Ninguém fica pra trás,", "Meus gatos concordariam,"],
+      "estilo": ["protetora", "cuidado"]
+    },
+    "personalidade": {
+      "competitividade": 0.4, "fofoca": 0.4, "humor": 0.7,
+      "paciencia": 0.9, "ego": 0.4, "energia": 0.7
+    },
+    "social": {
+      "amigos": ["ricardinho", "ariana", "joana"],
+      "rivais": [],
+      "assuntos_favoritos": ["cotidiano", "vida_alheia"]
+    }
+  },
+  {
+    "id": "kaic",
+    "nome": "Kaic",
+    "titulo": "O Aventureiro",
+    "cidade_base": "florianopolis",
+    "avatar": { "corBody": "#f28775" },
+    "voz": {
+      "bordoes": ["Bora nessa,", "Já rolei essa antes,", "Sem drama,", "Faz aí que dá certo,"],
+      "estilo": ["aventura", "informal"]
+    },
+    "personalidade": {
+      "competitividade": 0.6, "fofoca": 0.3, "humor": 0.8,
+      "paciencia": 0.6, "ego": 0.55, "energia": 0.95
+    },
+    "social": {
+      "amigos": ["rafaela"],
+      "rivais": [],
+      "assuntos_favoritos": ["destinos", "cotidiano"]
+    }
+  },
+  {
+    "id": "lion",
+    "nome": "Lion",
+    "titulo": "O Sonso",
+    "cidade_base": "beto-carrero",
+    "avatar": { "corBody": "#8a8fa0" },
+    "voz": {
+      "bordoes": ["Hm.", "Se você diz.", "Ok.", "Interessante isso,"],
+      "estilo": ["seco", "ironia_baixo_perfil"]
+    },
+    "personalidade": {
+      "competitividade": 0.4, "fofoca": 0.5, "humor": 0.85,
+      "paciencia": 0.75, "ego": 0.3, "energia": 0.45
+    },
+    "social": {
+      "amigos": ["simone"],
+      "rivais": [],
+      "assuntos_favoritos": ["cotidiano", "vida_alheia"]
+    }
+  },
+  {
+    "id": "helenice",
+    "nome": "Helenice",
+    "titulo": "A Nunca Errada",
+    "cidade_base": "serra-rio-do-rastro",
+    "avatar": { "corBody": "#d0a4c8" },
+    "voz": {
+      "bordoes": ["Não é bem assim,", "Deixa eu te corrigir,", "Você tá enganado,", "Vou te mostrar,"],
+      "estilo": ["convicta", "correcao"]
+    },
+    "personalidade": {
+      "competitividade": 0.7, "fofoca": 0.5, "humor": 0.4,
+      "paciencia": 0.35, "ego": 0.85, "energia": 0.7
+    },
+    "social": {
+      "amigos": [],
+      "rivais": ["brenda", "taylor"],
+      "assuntos_favoritos": ["auto_promocao", "provocacao"]
+    }
+  },
+  {
+    "id": "priscila",
+    "nome": "Priscila",
+    "titulo": "A Tagarela",
+    "cidade_base": "florianopolis",
+    "avatar": { "corBody": "#ffb27a" },
+    "voz": {
+      "bordoes": ["GENTE!", "Escuta uma coisa,", "Vocês não imaginam,", "Ai meu Deus,"],
+      "estilo": ["tagarela", "empolgacao", "exagero"]
+    },
+    "personalidade": {
+      "competitividade": 0.5, "fofoca": 0.9, "humor": 0.9,
+      "paciencia": 0.5, "ego": 0.55, "energia": 1.0
+    },
+    "social": {
+      "amigos": ["samuel", "simone"],
+      "rivais": [],
+      "assuntos_favoritos": ["vida_alheia", "cotidiano"]
+    }
+  },
+  {
+    "id": "rafael",
+    "nome": "Rafael",
+    "titulo": "O Racional",
+    "cidade_base": "blumenau",
+    "avatar": { "corBody": "#4fa8d8" },
+    "voz": {
+      "bordoes": ["Faz sentido pensar que,", "Vamos entender isso,", "A lógica aqui é,", "Voltando um passo,"],
+      "estilo": ["racional", "ponderado"]
+    },
+    "personalidade": {
+      "competitividade": 0.65, "fofoca": 0.35, "humor": 0.6,
+      "paciencia": 0.75, "ego": 0.6, "energia": 0.7
+    },
+    "social": {
+      "amigos": ["raquel", "moatez"],
+      "rivais": ["gabriel"],
+      "assuntos_favoritos": ["destinos", "cotidiano"]
+    }
+  },
+  {
+    "id": "taylor",
+    "nome": "Taylor",
+    "titulo": "O Teórico",
+    "cidade_base": "beto-carrero",
+    "avatar": { "corBody": "#b78cd6" },
+    "voz": {
+      "bordoes": ["Tô te falando,", "Meu cliente hoje...", "Não é coincidência,", "Reparei uma coisa,"],
+      "estilo": ["teorico", "emocional"]
+    },
+    "personalidade": {
+      "competitividade": 0.5, "fofoca": 0.85, "humor": 0.5,
+      "paciencia": 0.4, "ego": 0.55, "energia": 0.7
+    },
+    "social": {
+      "amigos": [],
+      "rivais": ["helenice"],
+      "assuntos_favoritos": ["vida_alheia", "cotidiano"]
+    }
+  },
+  {
+    "id": "daniel-c",
+    "nome": "Daniel C",
+    "titulo": "O Processual",
+    "cidade_base": "blumenau",
+    "avatar": { "corBody": "#7a8f6a" },
+    "voz": {
+      "bordoes": ["Com licença,", "Se me permite,", "Seguindo o protocolo,", "Muito bem,"],
+      "estilo": ["educado", "formal"]
+    },
+    "personalidade": {
+      "competitividade": 0.55, "fofoca": 0.2, "humor": 0.4,
+      "paciencia": 0.85, "ego": 0.45, "energia": 0.7
+    },
+    "social": {
+      "amigos": ["raquel"],
+      "rivais": [],
+      "assuntos_favoritos": ["destinos", "cotidiano"]
+    }
+  },
+  {
+    "id": "edmarton",
+    "nome": "Edmarton",
+    "titulo": "O Competitivo Ferido",
+    "cidade_base": "balneario-camboriu",
+    "avatar": { "corBody": "#c76a55" },
+    "voz": {
+      "bordoes": ["Não vou ficar em segundo,", "Meta eu bato,", "Isso é comigo,", "Vou virar essa,"],
+      "estilo": ["competitivo", "meta"]
+    },
+    "personalidade": {
+      "competitividade": 1.0, "fofoca": 0.3, "humor": 0.4,
+      "paciencia": 0.3, "ego": 0.9, "energia": 0.9
+    },
+    "social": {
+      "amigos": [],
+      "rivais": ["luciana", "jayme"],
+      "assuntos_favoritos": ["auto_promocao", "destinos", "provocacao"]
+    }
+  },
+  {
+    "id": "simone",
+    "nome": "Simone",
+    "titulo": "A Ácida Fina",
+    "cidade_base": "beto-carrero",
+    "avatar": { "corBody": "#e6b4a4" },
+    "voz": {
+      "bordoes": ["Sem graça, mas,", "Rindo por fora,", "Sem querer ofender,", "Sério mesmo,"],
+      "estilo": ["humor_acido", "verdade_dura", "ironia_seca"]
+    },
+    "personalidade": {
+      "competitividade": 0.5, "fofoca": 0.6, "humor": 0.9,
+      "paciencia": 0.7, "ego": 0.5, "energia": 0.7
+    },
+    "social": {
+      "amigos": ["lion", "priscila"],
+      "rivais": [],
+      "assuntos_favoritos": ["vida_alheia", "provocacao", "cotidiano"]
+    }
+  },
+  {
+    "id": "raquel",
+    "nome": "Raquel",
+    "titulo": "A Perfeccionista",
+    "cidade_base": "blumenau",
+    "avatar": { "corBody": "#c8a8e0" },
+    "voz": {
+      "bordoes": ["Isso tá errado,", "Fora do processo,", "Já reclamei disso,", "Vou anotar aqui,"],
+      "estilo": ["perfeccionismo", "reclamacao"]
+    },
+    "personalidade": {
+      "competitividade": 0.6, "fofoca": 0.4, "humor": 0.5,
+      "paciencia": 0.4, "ego": 0.6, "energia": 0.7
+    },
+    "social": {
+      "amigos": ["rafael", "daniel-c"],
+      "rivais": [],
+      "assuntos_favoritos": ["cotidiano", "provocacao"]
+    }
+  },
+  {
+    "id": "daniel-b",
+    "nome": "Daniel B",
+    "titulo": "O Gaúcho Seco",
+    "cidade_base": "blumenau",
+    "avatar": { "corBody": "#8a5a3a" },
+    "voz": {
+      "bordoes": ["Bah tchê,", "Tá tri,", "Deixa comigo,", "Tem coisa pior,"],
+      "estilo": ["gaucho", "sarcasmo_seco", "ironia_seca"]
+    },
+    "personalidade": {
+      "competitividade": 0.55, "fofoca": 0.4, "humor": 0.95,
+      "paciencia": 0.8, "ego": 0.4, "energia": 0.6
+    },
+    "social": {
+      "amigos": [],
+      "rivais": ["jayme"],
+      "assuntos_favoritos": ["cotidiano", "provocacao"]
+    }
+  },
+  {
+    "id": "jayme",
+    "nome": "Jayme",
+    "titulo": "O Otimista Empurrador",
+    "cidade_base": "balneario-camboriu",
+    "avatar": { "corBody": "#ffd6a0" },
+    "voz": {
+      "bordoes": ["Tá bonito isso,", "Pode fechar,", "Cliente adorou,", "Aproveita agora,"],
+      "estilo": ["otimismo_forcado", "auto_promocao"]
+    },
+    "personalidade": {
+      "competitividade": 0.75, "fofoca": 0.4, "humor": 0.6,
+      "paciencia": 0.5, "ego": 0.7, "energia": 0.85
+    },
+    "social": {
+      "amigos": [],
+      "rivais": ["daniel-b", "edmarton"],
+      "assuntos_favoritos": ["destinos", "auto_promocao"]
+    }
+  },
+  {
+    "id": "moatez",
+    "nome": "Moatez",
+    "titulo": "O Determinado",
+    "cidade_base": "beto-carrero",
+    "avatar": { "corBody": "#a4c9a4" },
+    "voz": {
+      "bordoes": ["Vou dar meu melhor,", "Quero muito acertar,", "Vou provar,", "Não durmo até bater a meta,"],
+      "estilo": ["esforco", "determinacao"]
+    },
+    "personalidade": {
+      "competitividade": 0.85, "fofoca": 0.2, "humor": 0.5,
+      "paciencia": 0.7, "ego": 0.5, "energia": 0.9
+    },
+    "social": {
+      "amigos": ["rafael"],
+      "rivais": [],
+      "assuntos_favoritos": ["destinos", "cotidiano", "auto_promocao"]
+    }
+  },
+  {
+    "id": "ricardinho",
+    "nome": "Ricardinho",
+    "titulo": "O Paizão",
+    "cidade_base": "serra-rio-do-rastro",
+    "avatar": { "corBody": "#e8a0a0" },
+    "voz": {
+      "bordoes": ["Vamo lá filho,", "Que bom que veio,", "Pega um café aí,", "A casa é sua,"],
+      "estilo": ["paizao", "acolhedor"]
+    },
+    "personalidade": {
+      "competitividade": 0.4, "fofoca": 0.5, "humor": 0.85,
+      "paciencia": 0.9, "ego": 0.4, "energia": 0.75
+    },
+    "social": {
+      "amigos": ["isabella"],
+      "rivais": [],
+      "assuntos_favoritos": ["cotidiano", "vida_alheia", "destinos"]
     }
   }
 ]
