@@ -4,10 +4,16 @@ import { TouchInput } from './core/TouchInput.js';
 import { CameraRig } from './core/CameraRig.js';
 import { World } from './world/World.js';
 import { Player } from './entities/Player.js';
-import { NPCPlaceholder, NPCS_INICIAIS } from './entities/NPCPlaceholder.js';
+import { NPC } from './entities/NPC.js';
 import { CharacterCustomization } from './entities/CharacterCustomization.js';
 import { Minimap } from './ui/Minimap.js';
 import { CustomizationPanel } from './ui/CustomizationPanel.js';
+import { SpeechBubbles } from './ui/SpeechBubbles.js';
+import { SocialGraph } from './ai/SocialGraph.js';
+import { MemoryBank } from './ai/MemoryBank.js';
+import { DialogueEngine } from './ai/DialogueEngine.js';
+import { NPCBrain } from './ai/NPCBrain.js';
+import personagens from './data/personagens.json';
 import { SPAWN, ZONAS, encontrarZona } from './data/zonas.js';
 
 const container = document.getElementById('game');
@@ -26,24 +32,45 @@ player.cameraRig = cameraRig;
 engine.add(cameraRig);
 engine.add(player);
 
-// NPCs placeholder (Fase 2 — sem IA). Postos perto da placa da cidade a que pertencem.
+// Balões de fala 3D
+const bubbles = new SpeechBubbles(container, engine);
+engine.add(bubbles);
+bubbles.registrarAncora(player, 'Você');
+
+// Camada social + memória + diálogo
+const social = new SocialGraph(personagens);
+const memory = new MemoryBank();
+const dialogue = new DialogueEngine({ personagens, socialGraph: social, memoryBank: memory });
+
+// NPCs autônomos (Fase 3). Cada um nasce na sua cidade_base com jitter.
 const zonaPorId = new Map(ZONAS.map(z => [z.id, z]));
 const npcs = [];
-for (const cfg of NPCS_INICIAIS) {
-  const zona = zonaPorId.get(cfg.cidade);
-  if (!zona) continue;
-  const pos = {
-    x: zona.centro.x + cfg.offset.x,
-    z: zona.centro.z + cfg.offset.z
-  };
-  const npc = new NPCPlaceholder(engine.scene, {
-    id: cfg.id, nome: cfg.nome, cor: cfg.cor, pos, facing: Math.random() * Math.PI * 2
-  });
+for (const p of personagens) {
+  const zona = zonaPorId.get(p.cidade_base) || ZONAS[0];
+  const jitter = () => (Math.random() - 0.5) * (zona.raio * 0.5);
+  const spawn = { x: zona.centro.x + jitter(), z: zona.centro.z + jitter() };
+  const npc = new NPC(engine.scene, p, spawn);
   npcs.push(npc);
+  bubbles.registrarAncora(npc, p.nome);
+}
+// Depois de criar todos, cada um recebe o próprio brain (que enxerga os outros)
+for (const npc of npcs) {
+  npc.brain = new NPCBrain({
+    personagem: npc.personagem,
+    npc,
+    npcs,
+    social,
+    memory,
+    dialogue,
+    bubbles
+  });
   engine.add(npc);
 }
 
-// Customização visual (painel de teste manual — Fase 4 ligará ao XP real)
+// Seed do MemoryBank: registra uma "ausência" pra dar assunto na abertura
+memory.add('absence', { actor: 'marcelo' });
+
+// Customização visual (painel de teste)
 const customization = new CharacterCustomization(player.character);
 const customPanel = new CustomizationPanel(customization);
 
@@ -51,7 +78,7 @@ const customPanel = new CustomizationPanel(customization);
 const minimap = new Minimap(document.getElementById('minimap'), player, npcs);
 engine.add(minimap);
 
-// UI: badge de zona atual
+// Badge de zona atual
 const zoneBadge = document.getElementById('zone-badge');
 let zonaAtualId = null;
 setInterval(() => {
@@ -80,5 +107,5 @@ requestAnimationFrame(() => {
 
 engine.start();
 
-console.log('[Expedição Barra Sul] Fase 2 iniciada. NPCs placeholder:',
-  npcs.map(n => n.nome).join(', '));
+console.log('[Expedição Barra Sul] Fase 3 iniciada. NPCs autônomos:',
+  npcs.map(n => `${n.nome} (${n.personagem.titulo})`).join(', '));

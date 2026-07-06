@@ -1,0 +1,98 @@
+[
+  {
+    "id": "jefinho",
+    "nome": "Jefinho",
+    "titulo": "O Fofoqueiro",
+    "cidade_base": "balneario-camboriu",
+    "avatar": { "corBody": "#8bc98a" },
+    "voz": {
+      "bordoes": ["Gente, vocês não sabem...", "Tô sabendo de tudo,", "Escuta essa,", "Não vou dar nome, mas"],
+      "estilo": ["exagero", "sussurro", "pergunta_retorica"]
+    },
+    "personalidade": {
+      "competitividade": 0.4,
+      "fofoca": 1.0,
+      "humor": 0.9,
+      "paciencia": 0.6,
+      "ego": 0.5,
+      "energia": 0.85
+    },
+    "social": {
+      "amigos": ["rose"],
+      "rivais": ["marcelo"],
+      "assuntos_favoritos": ["vida_alheia", "sumidos", "provocacao"]
+    }
+  },
+  {
+    "id": "marcelo",
+    "nome": "Marcelo",
+    "titulo": "O Fechador",
+    "cidade_base": "florianopolis",
+    "avatar": { "corBody": "#e08c8c" },
+    "voz": {
+      "bordoes": ["Última unidade,", "Fechei mais uma,", "Enquanto vocês pensam,", "Essa é comigo,"],
+      "estilo": ["numeros", "pressa", "auto_promocao"]
+    },
+    "personalidade": {
+      "competitividade": 1.0,
+      "fofoca": 0.3,
+      "humor": 0.4,
+      "paciencia": 0.3,
+      "ego": 0.95,
+      "energia": 0.9
+    },
+    "social": {
+      "amigos": [],
+      "rivais": ["jefinho", "carla"],
+      "assuntos_favoritos": ["ranking", "destinos", "auto_promocao"]
+    }
+  },
+  {
+    "id": "carla",
+    "nome": "Carla",
+    "titulo": "A Competitiva",
+    "cidade_base": "beto-carrero",
+    "avatar": { "corBody": "#f0b6d4" },
+    "voz": {
+      "bordoes": ["Já garanti o meu,", "Bota no meu nome,", "Do jeito que combinamos,", "Se depender de mim,"],
+      "estilo": ["decisao", "confianca", "meta"]
+    },
+    "personalidade": {
+      "competitividade": 0.95,
+      "fofoca": 0.4,
+      "humor": 0.6,
+      "paciencia": 0.5,
+      "ego": 0.7,
+      "energia": 0.85
+    },
+    "social": {
+      "amigos": ["rose"],
+      "rivais": ["marcelo"],
+      "assuntos_favoritos": ["ranking", "destinos", "provocacao"]
+    }
+  },
+  {
+    "id": "rose",
+    "nome": "Dona Rose",
+    "titulo": "A Veterana",
+    "cidade_base": "blumenau",
+    "avatar": { "corBody": "#b69ad3" },
+    "voz": {
+      "bordoes": ["No meu tempo,", "Deixa a Dona Rose contar,", "Quando eu comecei nisso,", "Essa juventude aí,"],
+      "estilo": ["nostalgia", "sabedoria", "ironia_seca"]
+    },
+    "personalidade": {
+      "competitividade": 0.3,
+      "fofoca": 0.7,
+      "humor": 0.8,
+      "paciencia": 0.9,
+      "ego": 0.4,
+      "energia": 0.5
+    },
+    "social": {
+      "amigos": ["jefinho", "carla"],
+      "rivais": [],
+      "assuntos_favoritos": ["vida_alheia", "destinos", "cotidiano"]
+    }
+  }
+]
