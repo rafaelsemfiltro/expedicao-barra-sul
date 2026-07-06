@@ -12,7 +12,7 @@ O jogo é um web game 3D, jogável em desktop e celular pelo navegador, sem inst
 - **Hospedagem**: GitHub Pages (build estático via GitHub Actions)
 - **Áudio**: Howler.js (música ambiente + efeitos, com fallback silencioso)
 - **Assets 3D**: Modelos low-poly em glTF (.glb), criados/adaptados de packs CC0
-- **Fotos**: Acervo próprio do Rafael (BC, drone, viagens) em WebP otimizado
+- **Fotos**: Repositórios livres de licença (Unsplash, Pexels, Wikimedia Commons) em WebP otimizado, com créditos preservados em `assets/photos/CREDITOS.md`
 
 Por que essa stack: roda em qualquer celular da sala de vendas, custo zero de servidor de jogo (Supabase free tier aguenta uma equipe), deploy automático a cada push, e o Rafael já domina Supabase e GitHub Pages.
 
@@ -114,7 +114,7 @@ expedicao-barra-sul/
 │
 └── assets/
     ├── models/                           ← .glb (personagens, prédios, props, FG Big Wheel...)
-    ├── photos/                           ← fotos reais em WebP (1280px máx)
+    ├── photos/                           ← fotos CC0/CC-BY em WebP (1280px máx) + CREDITOS.md
     ├── audio/
     │   ├── music/                        ← 1 trilha por cidade (licença CC0/CC-BY)
     │   └── sfx/                          ← passos, acerto, erro, fogos, mar, pássaros
@@ -283,7 +283,7 @@ Deu Mole: erro em pergunta marcada como "nivel": "facil" gera evento de peso alt
 - **FASE 1 — Arquitetura** — este documento ✅
 - **FASE 2 — Mundo 3D + movimentação** — terreno de SC, 6 zonas em blockout (formas simples), estradas, câmera 3ª pessoa, WASD + joystick mobile, um personagem placeholder andando/correndo
 - **FASE 3 — NPCs autônomos** — Character definitivo low-poly, NPCBrain, SocialGraph, MemoryBank, DialogueEngine com 4 personagens fictícios, balões 3D
-- **FASE 4 — Quiz + destinos** — AttractionPanel com fotos reais, bancos de perguntas (mín. 30 por cidade), QuizSystem, XP, Supabase completo, multiplayer Realtime, login PIN
+- **FASE 4 — Quiz + destinos** — AttractionPanel com fotos CC0/CC-BY dos pontos turísticos, bancos de perguntas (mín. 30 por cidade), QuizSystem, XP, Supabase completo, multiplayer Realtime, login PIN
 - **FASE 5 — Ranking + conquistas** — pódio animado, medalhas, títulos, Deu Mole integrado às conversas
 - **FASE 6 — Polimento** — música por cidade, sons, partículas, fogos, cidade dourada, otimização mobile, troca do elenco fictício pelo real
 
@@ -291,4 +291,4 @@ Cada fase termina com o jogo rodando e testável no GitHub Pages. Nunca acumular
 
 ## 11. Riscos e decisões conscientes
 
-Assets 3D são o maior custo de tempo: usar packs low-poly CC0 (Kenney, Quaternius) como base e customizar cores/composição economiza semanas sem parecer genérico, porque a composição das cidades é única. Fotos: usar exclusivamente acervo próprio elimina risco de licença. Áudio: apenas fontes CC0/CC-BY com crédito. Performance mobile: orçamento de 100k triângulos em cena, sombras apenas do sol, LOD nas cidades distantes. PIN de 3 dígitos é segurança de brincadeira (adequado ao contexto: o pior ataque possível é um colega zoar pelo outro — o que, convenhamos, vira conteúdo pro jogo).
+Assets 3D são o maior custo de tempo: usar packs low-poly CC0 (Kenney, Quaternius) como base e customizar cores/composição economiza semanas sem parecer genérico, porque a composição das cidades é única. Fotos: usar exclusivamente repositórios com licença livre (Unsplash, Pexels, Wikimedia Commons — CC0 ou CC-BY com atribuição em `assets/photos/CREDITOS.md`) elimina risco de licença sem depender de acervo próprio. Áudio: apenas fontes CC0/CC-BY com crédito. Performance mobile: orçamento de 100k triângulos em cena, sombras apenas do sol, LOD nas cidades distantes. PIN de 3 dígitos é segurança de brincadeira (adequado ao contexto: o pior ataque possível é um colega zoar pelo outro — o que, convenhamos, vira conteúdo pro jogo).
