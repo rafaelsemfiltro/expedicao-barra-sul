@@ -26,7 +26,8 @@
       "Bash(git -c user.name=\"Rafael\" -c user.email=\"rafael@expedicao.local\" commit -m \"Debug: instrumenta SpeechBubbles + NPCBrain transitions\")",
       "Bash(git -c user.name=Rafael -c user.email=rafael@expedicao.local commit -m 'Fase 3 fix: NPCs conversam de verdade *)",
       "Bash(git -c user.name=Rafael -c user.email=rafael@expedicao.local commit -m 'Fase 3: baloes com tempo de leitura *)",
-      "Bash(git -c user.name=Rafael -c user.email=rafael@expedicao.local commit -m 'Fase 3: turno na conversa \\(um fala, outros escutam\\) *)"
+      "Bash(git -c user.name=Rafael -c user.email=rafael@expedicao.local commit -m 'Fase 3: turno na conversa \\(um fala, outros escutam\\) *)",
+      "Bash(git -c user.name=Rafael -c user.email=rafael@expedicao.local commit -m 'Fase 3: pausa por regiao apos cada fala *)"
     ]
   }
 }

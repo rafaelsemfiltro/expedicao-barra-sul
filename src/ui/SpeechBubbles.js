@@ -67,15 +67,33 @@ export class SpeechBubbles {
     entry.div.style.display = 'block';
     entry.label.style.display = 'block';
     entry.ttl = ttl;
+    // Guarda posição da última fala pra coordenar pausas por região:
+    // NPCs num raio de X metros dessa posição vão esperar antes de falar de novo.
+    const pos = grupo.position;
+    entry.falaX = pos.x;
+    entry.falaZ = pos.z;
+    entry.silencioAte = performance.now() + ttl * 1000 + 1400;   // 1.4s de pausa após balão
   }
 
-  // True se o balão desse dono ainda está visível — usado pra coordenar turnos
-  // de fala numa roda: outros NPCs próximos esperam até o balão sumir.
+  // True se o balão desse dono ainda está visível
   temFalaAtiva(dono) {
     const grupo = this._grupoDe(dono);
     if (!grupo) return false;
     const entry = this._porDono.get(grupo.uuid);
     return !!(entry && entry.ttl > 0);
+  }
+
+  // True se algum balão numa roda ao redor do ponto ainda está em vigência
+  // (visível OU em janela de silêncio pós-fala). Cria pausas naturais entre falas.
+  emJanelaDeSilencio(x, z, raio = 10) {
+    const agora = performance.now();
+    for (const entry of this._porDono.values()) {
+      if (agora >= (entry.silencioAte || 0)) continue;
+      const dx = x - (entry.falaX ?? 0);
+      const dz = z - (entry.falaZ ?? 0);
+      if (dx * dx + dz * dz <= raio * raio) return true;
+    }
+    return false;
   }
 
   update(dt) {

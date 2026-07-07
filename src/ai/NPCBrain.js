@@ -239,15 +239,12 @@ export class NPCBrain {
     // NPC sempre vira pro alvo enquanto está na roda (mesmo esperando a vez)
     this.npc.olharPara(alvo.position);
 
-    // Turno na roda: se alguém próximo tá com balão ativo, espera a vez.
-    // Isso faz a conversa parecer conversa (um fala, outro escuta, outro responde)
-    // em vez de todos falarem em cima uns dos outros.
-    const naRoda = this._npcsProximos(DIST_CONVERSAR + 1.5);
-    for (const outro of naRoda) {
-      if (this.bubbles.temFalaAtiva(outro.npc)) {
-        this._proximaFalaEm = 0.4 + Math.random() * 0.3;   // volta a checar em <1s
-        return;
-      }
+    // Pausa por região: se qualquer fala próxima ainda está na janela de silêncio
+    // (balão visível OU 1.4s após balão sumir), este NPC espera. Isso cria pausas
+    // naturais entre falas — a conversa fica parecendo conversa.
+    if (this.bubbles.emJanelaDeSilencio(this.npc.position.x, this.npc.position.z, 10)) {
+      this._proximaFalaEm = 0.3 + Math.random() * 0.4;
+      return;
     }
 
     const cidadeAtual = this._cidadeAtual()?.nome || 'Santa Catarina';
@@ -258,9 +255,9 @@ export class NPCBrain {
       this.bubbles.mostrar(this.npc, fala.texto, ttl);
     }
     this._falasRestantes--;
-    // Próxima fala DELE só depois de um breve intervalo — mas antes disso,
-    // outros da roda vão querer responder e vão pegar o turno naturalmente.
-    this._proximaFalaEm = 1.8 + Math.random() * 1.2;
+    // Próxima fala dele só depois de vários segundos — o turno vai passar
+    // naturalmente pra outros da roda (via janela de silêncio).
+    this._proximaFalaEm = 3.5 + Math.random() * 2.0;
   }
 
   // === helpers ===
