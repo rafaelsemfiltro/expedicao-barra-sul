@@ -111,3 +111,6 @@ engine.start();
 
 console.log('[Expedição Barra Sul] Fase 3 iniciada. NPCs autônomos:',
   npcs.map(n => `${n.nome} (${n.personagem.titulo})`).join(', '));
+
+// Debug hook — inspecionar via console: window.__game.npcs[0].brain.estado etc.
+window.__game = { engine, player, npcs, bubbles, dialogue, memory, social };

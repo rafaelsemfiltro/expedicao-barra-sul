@@ -80,5 +80,9 @@ export class SpeechBubbles {
       }
     }
     this.renderer.render(this.engine.scene, this.engine.camera);
+    this._updateCount = (this._updateCount || 0) + 1;
+    if (this._updateCount === 1 || this._updateCount === 60) {
+      console.log('[bubbles] update #' + this._updateCount + ' porDono=' + this._porDono.size + ' domChildren=' + this.renderer.domElement.children.length);
+    }
   }
 }

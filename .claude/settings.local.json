@@ -16,7 +16,14 @@
       "Bash(git -c user.name=Rafael -c user.email=rafael@expedicao.local commit -m 'Fase 3: NPCs autonomos com cerebro, memoria, social e conversas *)",
       "Bash(git push *)",
       "Bash(git -c user.name=Rafael -c user.email=rafael@expedicao.local commit -m 'Docs: fotos passam a vir de repositorios CC0/CC-BY, nao acervo proprio *)",
-      "Bash(git -c user.name=Rafael -c user.email=rafael@expedicao.local commit -m 'Troca do elenco ficticio pelo real \\(23 vendedores\\) *)"
+      "Bash(git -c user.name=Rafael -c user.email=rafael@expedicao.local commit -m 'Troca do elenco ficticio pelo real \\(23 vendedores\\) *)",
+      "mcp__Claude_in_Chrome__list_connected_browsers",
+      "mcp__Claude_in_Chrome__select_browser",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__browser_batch",
+      "mcp__Claude_in_Chrome__javascript_tool",
+      "mcp__Claude_in_Chrome__read_console_messages",
+      "Bash(git -c user.name=\"Rafael\" -c user.email=\"rafael@expedicao.local\" commit -m \"Debug: instrumenta SpeechBubbles + NPCBrain transitions\")"
     ]
   }
 }

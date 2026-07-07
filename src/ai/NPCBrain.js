@@ -114,6 +114,9 @@ export class NPCBrain {
   }
 
   _entrar(novoEstado) {
+    if (this.p.id === 'brenda' || this.p.id === 'joana') {
+      console.log('[brain ' + this.p.id + '] ' + this.estado + ' -> ' + novoEstado);
+    }
     this.estado = novoEstado;
     this._tempoNoEstado = 0;
     this._estadoData = null;
