@@ -179,7 +179,7 @@ export class NPCBrain {
       turnos: 2 + Math.floor(Math.random() * 4)
     };
     this._falasRestantes = this._estadoData.turnos;
-    this._proximaFalaEm = 0.3 + Math.random() * 0.5;
+    this._proximaFalaEm = 1.2 + Math.random() * 0.8;
 
     this._registrarEncontro(alvo.brain.p.id);
   }
@@ -242,10 +242,12 @@ export class NPCBrain {
     const cidadeAtual = this._cidadeAtual()?.nome || 'Santa Catarina';
     const fala = this.dialogue.gerar(this.p.id, alvo.brain.p.id, cidadeAtual);
     if (fala) {
-      this.bubbles.mostrar(this.npc, fala.texto, 3.5);
+      // TTL do balão proporcional ao tamanho da fala (leitura ~14 chars/s), min 4.5s
+      const ttl = Math.max(4.5, fala.texto.length / 14);
+      this.bubbles.mostrar(this.npc, fala.texto, ttl);
     }
     this._falasRestantes--;
-    this._proximaFalaEm = 2.5 + Math.random() * 1.5;
+    this._proximaFalaEm = 4.5 + Math.random() * 2.0;
   }
 
   // === helpers ===
