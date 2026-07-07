@@ -69,6 +69,15 @@ export class SpeechBubbles {
     entry.ttl = ttl;
   }
 
+  // True se o balão desse dono ainda está visível — usado pra coordenar turnos
+  // de fala numa roda: outros NPCs próximos esperam até o balão sumir.
+  temFalaAtiva(dono) {
+    const grupo = this._grupoDe(dono);
+    if (!grupo) return false;
+    const entry = this._porDono.get(grupo.uuid);
+    return !!(entry && entry.ttl > 0);
+  }
+
   update(dt) {
     for (const entry of this._porDono.values()) {
       if (entry.ttl > 0) {
