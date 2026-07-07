@@ -42,13 +42,23 @@ const social = new SocialGraph(personagens);
 const memory = new MemoryBank();
 const dialogue = new DialogueEngine({ personagens, socialGraph: social, memoryBank: memory });
 
-// NPCs autônomos (Fase 3). Cada um nasce na sua cidade_base com jitter.
+// NPCs autônomos (Fase 3). Cada um nasce dentro da própria cidade_base, em
+// ângulo distribuído pra não amontoar todos no centro.
 const zonaPorId = new Map(ZONAS.map(z => [z.id, z]));
 const npcs = [];
+const contagemPorZona = new Map();
+for (const p of personagens) {
+  contagemPorZona.set(p.cidade_base, (contagemPorZona.get(p.cidade_base) || 0) + 1);
+}
+const indiceNaZona = new Map();
 for (const p of personagens) {
   const zona = zonaPorId.get(p.cidade_base) || ZONAS[0];
-  const jitter = () => (Math.random() - 0.5) * (zona.raio * 0.5);
-  const spawn = { x: zona.centro.x + jitter(), z: zona.centro.z + jitter() };
+  const total = contagemPorZona.get(p.cidade_base) || 1;
+  const i = indiceNaZona.get(p.cidade_base) || 0;
+  indiceNaZona.set(p.cidade_base, i + 1);
+  const ang = (i / total) * Math.PI * 2 + Math.random() * 0.3;
+  const r = zona.raio * (0.35 + Math.random() * 0.45);
+  const spawn = { x: zona.centro.x + Math.cos(ang) * r, z: zona.centro.z + Math.sin(ang) * r };
   const npc = new NPC(engine.scene, p, spawn);
   npcs.push(npc);
   bubbles.registrarAncora(npc, p.nome);
@@ -109,8 +119,9 @@ requestAnimationFrame(() => {
 
 engine.start();
 
-console.log('[Expedição Barra Sul] Fase 3 iniciada. NPCs autônomos:',
-  npcs.map(n => `${n.nome} (${n.personagem.titulo})`).join(', '));
+console.log('[Expedição Barra Sul] Fase 3 iniciada.',
+  npcs.length, 'NPCs autônomos:',
+  npcs.map(n => n.nome).join(', '));
 
-// Debug hook — inspecionar via console: window.__game.npcs[0].brain.estado etc.
+// Debug (comente pra tirar): expõe estado global no console
 window.__game = { engine, player, npcs, bubbles, dialogue, memory, social };

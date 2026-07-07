@@ -5,8 +5,8 @@ import { Character } from './Character.js';
 // pontos-alvo (o brain planeja; o NPC executa "vai até o ponto (x,z)").
 // Anima idle/walk via Character.update(dt, velocidade).
 
-const VEL_ANDAR = 4.5;             // NPCs andam um pouco mais devagar que o player
-const CHEGADA_TOLERANCIA = 1.2;    // considera "chegou" quando fica a X do alvo
+const VEL_ANDAR = 6.0;             // NPCs andam um pouco mais devagar que o player
+const CHEGADA_TOLERANCIA = 1.5;    // considera "chegou" quando fica a X do alvo
 const TURN_SMOOTH = 8;
 
 export class NPC {

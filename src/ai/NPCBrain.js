@@ -16,10 +16,10 @@
 
 import { ZONAS, encontrarZona } from '../data/zonas.js';
 
-const RAIO_RODA = 4.0;         // NPCs a até 4m formam roda
-const DIST_CONVERSAR = 3.5;    // conversa até essa distância
-const MIN_DELAY_DECISAO = 4;
-const MAX_DELAY_DECISAO = 8;
+const RAIO_RODA = 8.0;         // NPCs a até 8m formam roda (mais generoso)
+const DIST_CONVERSAR = 7.0;    // conversa até essa distância (dava 3.5 e ficava impossível)
+const MIN_DELAY_DECISAO = 3;
+const MAX_DELAY_DECISAO = 6;
 
 export class NPCBrain {
   constructor({ personagem, npc, npcs, social, memory, dialogue, bubbles, now = Date.now }) {
@@ -114,9 +114,6 @@ export class NPCBrain {
   }
 
   _entrar(novoEstado) {
-    if (this.p.id === 'brenda' || this.p.id === 'joana') {
-      console.log('[brain ' + this.p.id + '] ' + this.estado + ' -> ' + novoEstado);
-    }
     this.estado = novoEstado;
     this._tempoNoEstado = 0;
     this._estadoData = null;
@@ -190,10 +187,29 @@ export class NPCBrain {
   // === execução por frame ===
 
   _executarIrPara(dt) {
-    const alvo = this._estadoData?.alvo;
-    if (!alvo) { this.estado = 'IDLE'; return; }
-    const chegou = this.npc.moverPara(alvo, dt);
-    if (chegou || this._tempoNoEstado > (this._estadoData.duracaoMax || 30)) {
+    const data = this._estadoData;
+    if (!data?.alvo) { this.estado = 'IDLE'; return; }
+
+    // Se estamos indo pra outro NPC, refresh do alvo com a posição atual dele
+    // (senão andamos até onde ele ESTAVA quando decidimos).
+    if (data.npcAlvo) {
+      data.alvo.x = data.npcAlvo.position.x;
+      data.alvo.z = data.npcAlvo.position.z;
+    }
+
+    // Pra FORMAR_RODA: se já estamos em DIST_CONVERSAR do alvo, para de andar e
+    // entra em CONVERSAR direto (não volta pra IDLE só pra re-decidir).
+    if (this.estado === 'FORMAR_RODA' && data.npcAlvo) {
+      const d = this._distanciaXZ(data.npcAlvo.position, this.npc.position);
+      if (d <= DIST_CONVERSAR) {
+        this._entrar('CONVERSAR');
+        this._tempoAteDecidir = 8;   // fica em conversar por um tempo
+        return;
+      }
+    }
+
+    const chegou = this.npc.moverPara(data.alvo, dt);
+    if (chegou || this._tempoNoEstado > (data.duracaoMax || 30)) {
       this.estado = 'IDLE';
       this._tempoAteDecidir = 0.5;
     }
